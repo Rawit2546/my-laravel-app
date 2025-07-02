@@ -1,1 +1,14 @@
+/node_modules
+/public/build
+/.env
+/.git
+/.github
+/.vscode
 /vendor
+/storage/app/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/logs/*
+/storage/*.sqlite
+/bootstrap/cache/*
