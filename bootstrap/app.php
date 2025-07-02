@@ -14,7 +14,17 @@
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+// Add this block for Vercel Serverless environment
+if (isset($_SERVER['VERCEL_ENV']) || env('VERCEL')) { // ตรวจสอบ VERCEL_ENV หรือ VERCEL env variable
+    $app->useStoragePath('/tmp/storage');
+}
 
+// Existing code...
+$app->singleton(
+    Illuminate\Contracts\Http\Kernel::class,
+    App\Http\Kernel::class
+);
+// ...
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces

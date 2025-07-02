@@ -32,7 +32,7 @@ return [
 
         'local' => [
     'driver' => 'local',
-    'root' => env('VERCEL') ? '/tmp/storage/app' : storage_path('app'),
+    'root' => storage_path('app'),
 ],
 
         'public' => [
