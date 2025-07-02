@@ -64,11 +64,10 @@ return [
         ],
 
         'daily' => [
-            'driver' => 'daily',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-            'days' => 14,
-        ],
+    'driver' => 'daily',
+    'path' => is_serverless() ? '/tmp/storage/logs/laravel.log' : storage_path('logs/laravel.log'),
+    'days' => 14,
+],
 
         'slack' => [
             'driver' => 'slack',
