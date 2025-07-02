@@ -58,14 +58,14 @@ return [
         ],
 
         'single' => [
-            'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
-            'level' => env('LOG_LEVEL', 'debug'),
-        ],
+    'driver' => 'single',
+    'path' => storage_path('logs/laravel.log'), // ถูกต้องแล้ว
+    'level' => env('LOG_LEVEL', 'debug'),
+],
 
-        'daily' => [
+'daily' => [
     'driver' => 'daily',
-    'path' => storage_path('logs/laravel.log'),
+    'path' => storage_path('logs/laravel.log'), // ถูกต้องแล้ว
     'days' => 14,
 ],
 

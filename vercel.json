@@ -1,20 +1,40 @@
 {
   "version": 2,
-  "regions": ["fra1"], 
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.7.2" 
-    }
-  },
-  "routes": [
+  "public": true,
+  "builds": [
     {
-      "src": "/build/(.*)",
-      "dest": "/public/build/$1" 
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/api/index.php" 
+      "src": "public/index.php",
+      "use": "@vercel/php",
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "php@8.2" 
+      }
     }
   ],
-  "outputDirectory": "public" 
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "public/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "true", 
+    "APP_URL": "https://my-laravel-app-xi.vercel.app", 
+    "LOG_CHANNEL": "stderr", 
+    "APP_KEY": "base64:YOUR_APP_KEY_HERE", 
+    "DB_CONNECTION": "pgsql", 
+    "DB_HOST": "YOUR_DB_HOST", 
+    "DB_PORT": "YOUR_DB_PORT", 
+    "DB_DATABASE": "YOUR_DB_DATABASE", 
+    "DB_USERNAME": "YOUR_DB_USERNAME", 
+    "DB_PASSWORD": "YOUR_DB_PASSWORD" 
+   
+  },
+  "functions": {
+    "public/index.php": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  }
 }
