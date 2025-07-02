@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Application; // <-- เพิ่มบรรทัดนี้เข้ามา
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -11,27 +13,22 @@
 |
 */
 
-$app = new Illuminate\Foundation\Application(
+$app = new Application( // ตอนนี้สามารถใช้แค่ Application ได้แล้ว
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+
 // Add this block for Vercel Serverless environment
 if (isset($_SERVER['VERCEL_ENV']) || env('VERCEL')) { // ตรวจสอบ VERCEL_ENV หรือ VERCEL env variable
     $app->useStoragePath('/tmp/storage');
 }
 
-// Existing code...
-$app->singleton(
-    Illuminate\Contracts\Http\Kernel::class,
-    App\Http\Kernel::class
-);
-// ...
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
 |--------------------------------------------------------------------------
 |
 | Next, we need to bind some important interfaces into the container so
-| we will be able to resolve them when needed. The kernels serve the
+| we will be able to resolve them when they are needed. The kernels serve the
 | incoming requests to this application from both the web and CLI.
 |
 */
