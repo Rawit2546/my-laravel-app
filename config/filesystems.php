@@ -32,7 +32,7 @@ return [
 
         'local' => [
     'driver' => 'local',
-    'root' => is_serverless() ? '/tmp/storage/app' : storage_path('app'),
+    'root' => env('VERCEL') ? '/tmp/storage/app' : storage_path('app'),
 ],
 
         'public' => [

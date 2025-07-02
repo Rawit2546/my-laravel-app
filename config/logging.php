@@ -65,7 +65,7 @@ return [
 
         'daily' => [
     'driver' => 'daily',
-    'path' => is_serverless() ? '/tmp/storage/logs/laravel.log' : storage_path('logs/laravel.log'),
+    'path' => env('VERCEL') ? '/tmp/storage/logs/laravel.log' : storage_path('logs/laravel.log'),
     'days' => 14,
 ],
 
