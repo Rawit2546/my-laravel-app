@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Application; // <-- ตรวจสอบว่ามีบรรทัดนี้
+use Illuminate\Foundation\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +14,7 @@ $app = new Application(
 
 // Add this block for Vercel Serverless environment
 if (isset($_SERVER['VERCEL_ENV']) || env('VERCEL')) {
-    $app->useStoragePath('/tmp/storage'); // <-- ตรวจสอบว่ามีบรรทัดนี้
+    $app->useStoragePath('/tmp/storage');
 }
 
 /*
@@ -23,18 +23,21 @@ if (isset($_SERVER['VERCEL_ENV']) || env('VERCEL')) {
 |--------------------------------------------------------------------------
 */
 
+// *** บรรทัดนี้คือส่วนที่ต้องแก้ไข ***
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
     App\Http\Kernel::class
 );
 
+// *** บรรทัดนี้คือส่วนที่ต้องแก้ไข (แก้จาก Illuminate\Contracts\Console เป็น Illuminate\Contracts\Console\Kernel) ***
 $app->singleton(
-    Illuminate\Contracts\Console\Kernel::class,
+    Illuminate\Contracts\Console\Kernel::class, // <--- แก้ตรงนี้
     App\Console\Kernel::class
 );
 
+// *** บรรทัดนี้คือส่วนที่ต้องแก้ไข (แก้จาก Illuminate\Contracts\Debug เป็น Illuminate\Contracts\Debug\ExceptionHandler) ***
 $app->singleton(
-    Illuminate\Contracts\Debug\ExceptionHandler::class,
+    Illuminate\Contracts\Debug\ExceptionHandler::class, // <--- แก้ตรงนี้
     App\Exceptions\Handler::class
 );
 

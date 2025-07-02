@@ -19,10 +19,11 @@
   ],
   "env": {
     "APP_ENV": "production",
-    "APP_DEBUG": "true", 
+    "APP_DEBUG": "true",
     "APP_URL": "https://my-laravel-app-xi.vercel.app", 
-    "LOG_CHANNEL": "stderr", 
+    "LOG_CHANNEL": "stderr",
     "APP_KEY": "base64:YOUR_APP_KEY_HERE", 
+  
     "DB_CONNECTION": "pgsql", 
     "DB_HOST": "YOUR_DB_HOST", 
     "DB_PORT": "YOUR_DB_PORT", 
